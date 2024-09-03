@@ -136,11 +136,84 @@ if __name__=="__main__":
 - Finalizado el proceso se imrprime la matriz
 -----------------------------------
 
-### 4. Revisar que son los algoritmos de sorting, entender bubble-sort (enlace a implementación).
+### 4. Desarrollar un programa que sume los elementos de una columna dada de una matriz.
+```python
+from Reto11_1 import *
+if __name__=="__main__":
+    m1=generarmatriz(1) #generamos matriz
+    v:float=float(input("cual columna desea sumar?")) #preguntamos al usuario que columna desea sumar
+    lt:list=[] #esta vez solo creamos la lista
+    o=0 #declaramos una variable de iteraicon
+    y=len(m1) 
+    x=len(m1[0])
+    #x e y que representen la cantidad de columnas y filas respectivamente
+    if v>x or v<1: #caso en que la columna que se desea sumar no exista
+        print("no se puede sumar esa columna porquen o existe")
+    else: 
+        for i in range (y): #recorremos las filas normalmente
+            for j in range (x): #recorremos las columnas
+                if j==(v-1): #condicional a la que solo entraran los valores dentro de la columna que deseamos sumar
+                    lt.append(m1[i][j]) #añadimos el valor a la lista resultante
+        #completado el proceso pasamos a un ciclo
+        while o<len(lt): #ciclo while que se mantendra hasta la longitud de la lista
+            if o==0: #caso inicial
+                s=lt[o] #una variable s sera igual al primer valor de la lista
+            else: #caso de iteracion
+                s=s+lt[o] #se le sumara a s el valor o de la lista hasta que se complete
+            o=o+1 #aumento de la variable de la iteracion
+        print("el resultado de la suma es " + str(s)) #se escribe de manera comprensible
+```
 ### explicacion:
-- En palabras simple un algoritmo de sorting nos permite organizar una lista/arreglo segun ciertas metricas
-- El bubble-sort es uno de estos, es la manera mas simple de organizar elementos de una lista en relacion con su valor numerico.
-- En este se comparan los valores en orden con sus adayacentes dentro del contexto de la lista, en caso de ser el primero mayor que el segundo estos intercambian de lugar en la indexacion mientras que si esto no sucede se mantendra en su lugar
-- Independientemente de lo que pase se evaluara el siguiente valor de index, repitiendo el proceso hasta que el primer valor mas grande llegue al final de la lista en terminos de index
-- Este proceso se repetira con el segundo valor mas grande, el tercero hasta llegar al n valor mas grande
-- Este metodo al ser tan simple es facil de entender y es estable, pero suele ser algo lento en comparacion con otros algoritmos y al basarse en comparaciones puede limitar la funcionalidad del algoritmos en ciertos casos
+- Importamos la funcion del punto 1
+- generamos una matriz con la funcion importada
+- declaramos v como una variable que el usuario decidira cual es su valor, de esta dependera el numero de la columna que se sumara
+- creamos de una vez la lista resultante, esto porque para este punto no se necesita generar otra matriz
+- declaramos o como una variable de iteracion y a x e y como la cantidad de columnas y filas (como en el punto anterior)
+- usando un condicional declaramos el posible caso donde el numero ingresado no sea el de una columna, en este caso avisamos al usuario y acabamos el codigo
+- caso contrario realizamos el recorrido comun de 2 for por filas y columnas
+- dentro del for de las columnas añadimos otro condicional, en el cual se evaluara si j es igual al numero de columna indicado, si es asi se añadira el valor y si no se pasara al siguiente
+- completada la lista nos adentraremos a una ciclo while que durara hasta que o llege al valor de la longitud de la lista
+- con un if realizamos un caso inicial y un caso de iteracion, esto para emular una sumatoria (la suma de las columnas)
+- aumentamos la variable de iteracion por cada ciclo
+- completada la sumatoria la imrpimimos de forma comprensible para el usuario
+-----------------------------------
+
+### 5. Desarrollar un programa que sume los elementos de una fila dada de una matriz.
+```python
+from Reto11_1 import *
+if __name__=="__main__":
+    m1=generarmatriz(1) #generamos la matriz
+    v:float=float(input("cual fila desea sumar?")) #declaramos una variable para que el usuario indique la fila a sumar
+    lt:list=[] #declaramos la lista en donde añadiremos los valores de la fila
+    o=0 #variable de iteracion
+    y=len(m1) #cantidad de filas
+    x=len(m1[0]) #cantidad de columnas
+    if v>y or v<1: #caso en que la fila que se desea sumar no exista
+        print("no se puede sumar esa columna porquen o existe")
+    else: #caso en que la fila si exista
+        for i in range (y): #recorremos las filas
+            if i==(v-1): #condicional que solo entrara en la fila que deseamos sumar
+                for j in range (x): #recorremos las columnas
+                    lt.append(m1[i][j]) #añadimos los valores de la fila a la lista
+        while o<len(lt): #ciclo while que se mantendra hasta la longitud de la lista, representa una sumatoria
+            if o==0: #caso inicial
+                s=lt[o] #variable s sera igual al primer valor de la lista
+            else: #caso de iteracion
+                s=s+lt[o]   #se le sumara a s el valor o de la lista hasta que se complete
+            o=o+1 #aumento de la variable de la iteracion
+        print("el resultado de la suma es " + str(s)) #se escribe de manera comprensible
+```
+### explicacion:
+- Importamos la funcion del punto 1
+- generamos una matriz con la funcion importada
+- declaramos v como una variable que el usuario decidira cual es su valor, de esta dependera el numero de la fila que se sumara
+- creamos de una vez la lista resultante, esto porque para este punto no se necesita generar otra matriz
+- declaramos o como una variable de iteracion y a x e y como la cantidad de columnas y filas (como en el punto anterior)
+- usando un condicional declaramos el posible caso donde el numero ingresado no sea el de una fila, en este caso avisamos al usuario y acabamos el codigo
+- caso contrario realizamos el recorrido comun de 2 for por filas y columnas
+- dentro del for de las filas añadimos otro condicional, en el cual se evaluara si i es igual al numero de fila indicado, si es asi se añadira el valor y si no se pasara al siguiente
+- completada la lista nos adentraremos a una ciclo while que durara hasta que o llege al valor de la longitud de la lista
+- con un if realizamos un caso inicial y un caso de iteracion, esto para emular una sumatoria (la suma de las columnas)
+- aumentamos la variable de iteracion por cada ciclo
+- completada la sumatoria la imrpimimos de forma comprensible para el usuario
+  
