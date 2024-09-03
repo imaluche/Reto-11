@@ -49,6 +49,7 @@ if __name__ == "__main__":
 - Definimos una funcion para añadir elementos a una matriz, esta se usara en los siguientes puntos
 - Dentro del codigo declaramos una lista vacia que sera el resultado de la operacion
 - Aplicamos la funcion en 2 variables que permitan realizar la operacion
+- añadimos un condicional que lo unico que haga sea cambiar si se suma o resta, sin realizar un ningun otro cambio en el codigo
 - usamos 2 ciclos for para recorrer tanto las filas como columnas
 - añadimos a la matriz de resultado la suma de los valores [i][j] de la matriz, de esta forma sabemso que estan en las mismas "coordenadas"
 - Imprimimos nuestro resultado de manera que sea comprensible
