@@ -1,46 +1,57 @@
-# Reto-10 programacion de computadoras
+# Reto-11 programacion de computadoras
 ----------------------------------
 
-### 1. Desarrollar un algoritmo que calcule el promedio de un arreglo de reales.
+### 1. Desarrollar un algoritmo que permita la suma/resta de matrices
 
 ```python
-def adicionlista(l:list,k:bool):
-    # Definimos una funcion para añadir elementos a una lista
-    i=1
-    while i==1:
-        e= float(input("ingresa un numero, si no ingresas un numero entero o decimal el programa no funcionara correctamente:"))
-        l.append(e)
-        i=int(input("deseas ingresar otro numero? (1, cualquier otro numero para no)"))
-    if k==True: print("nuestra primera lista fue: "+ str(l)+ ", la siguiente lista no debe tener mas de "+ str(len(l))+" elementos")
-    else: print("nuestra segunda lista fue: "+ str(l)+ ", tiene "+ str(len(l))+" elementos.")
-    #por medio de un booleano damos diferentes opciones de salida
-
-#declaramos la lista a analizar
-
+def generarmatriz(n):
+  f = int(input("ingresa el numero de filas "))
+  c = int(input("ingresa el numero de columnas (cantidad de items de cada fila)"))
+  #indica la cantidad de matrices,filas y columnas que se generaran
+  matriz=[] #esta sera nuestra matriz en la que añadiremos los valores que desee el usuario
+  for j in range(f): #primer for que representa el recorrido por las filas
+    print("estamos/seguimos en nuestra "+ str(n)+ " matriz")
+    filat=[] #representa la fila en la que se añadiran los items, se vacia cada vez que se cambia de fila
+    for i in range(c): #representa el segundo recorrido, esta vez por las columnas
+      v= float(input("ingresa el valor " +str(i+1) +" de la fila"+ str(j+1))) #el usuario indica el valor que quiere añadir, estara en el puesto [j][i]
+      filat.append(v) #añade el valor a la fila
+      print(filat)
+    matriz.append(filat) #añadidos todos los valores de la fila se añade la fila a la matriz, siendo nuestra j fila
+    print(matriz)
+  return matriz #regrese la matriz generada
 if __name__ == "__main__":
-    p:list=[]
-    adicionlista(p,False) 
-    #aplicamos la funcion para añadir elementos a la lista
-    print(p)
-    D=sum(p)
-    #sumamos los valores de la lista con sum(), de manera alternativa podriamos usar un for y almacenar la suma en una variable
-    print(D)
-    d=len(p)
-    #almacenamos en una variable la longitud de la lista, esto se hara para obtener la media
-    ac:float= D/d
-    # Dividimos la suma de los valores entre la cantidad, obteniendo la media
-    print("el promedio de la lista "+ str(p)+" es "+ str(ac))
-    #la imprimimos de manera comprensible
+  print("recordar que ambas matrices deben ser del mismo tamaño para poder realizar la suma o resta")
+  m1=generarmatriz(1)
+  print(m1)
+  m2=generarmatriz(2)
+  print(m2)
+  #generamos 2 matrices
+  if len(m1)==len(m2): #comparamos su longitud para comprobar si ambas matrices son del mismo tamaño
+    print("las matrices son del mismo tamaño, es posible realizar la suma y resta")
+    d=int(input("ingresa 1 para realizar una suma y 2 para realizar una resta")) #le pedimos al usuario indicar que desea hacer
+    if d==1: #caso 1, suma
+      mt:list=[] #declaramos la lista que daremos como resultado
+      for i in range(len(m1)): #recorremos las filas
+        for j in range(len(m1[0])): #recorremos las columnas
+          mt.append(m1[i][j]+m2[i][j]) #añadimos a la lista que sera nuestro resultado la suma de los valores [i][j] de ambas matrices
+      print(mt) #imprimimos el resultado
+    if d==2: #caso 2, resta
+      mk:list=[] #declaramos la lista que daremos como resultados
+      for i in range(len(m1)): #recorremos las filas
+        for j in range(len(m1[0])): #recorremos las columnas
+          mk.append(m1[i][j]-m2[i][j]) #añadimos a la lista que sera nuestro resultado la resta de los valores [i][j] de ambas matrices
+      print(mk) #imprimimos el resultado
+  else: #resultado para indicar que las listas no son del mismo tamaño
+    print("las matrices no son del mismo tamaño, no es posible realizar la suma")
 
 ```
 #### explicacion:
-- Definimos una funcion para añadir elementos a una lista, esta se usara en los siguientes puntos
-- Dentro del codigo declaramos una lista vacia
-- Aplicamos la funcion en la lista de la cual obtendremos su media
-- Usando la funcion "sum" para que los valores de la lista se sumen, de manera alternativa se puede usar un bucle for y almacenar la suma en una variable
-- Usamos la funcion len para almacenar en otra variable la longitud de la lista, esto es importante para realizar la media
-- declaramos una ultima variable que sera nuestra media, esta es el resultado de la division entre la suma de los valores de la lista (D) y la cantidad de valores (d)
-- Imprimimos nuestro resultado de manera que se entienda que es
+- Definimos una funcion para añadir elementos a una matriz, esta se usara en los siguientes puntos
+- Dentro del codigo declaramos una lista vacia que sera el resultado de la operacion
+- Aplicamos la funcion en 2 variables que permitan realizar la operacion
+- usamos 2 ciclos for para recorrer tanto las filas como columnas
+- añadimos a la matriz de resultado la suma de los valores [i][j] de la matriz, de esta forma sabemso que estan en las mismas "coordenadas"
+- Imprimimos nuestro resultado de manera que sea comprensible
 -----------------------------------
 ### 2. Desarrollar un algoritmo que calcule el producto punto de dos arreglos de números enteros (reales) de igual tamaño.
 
