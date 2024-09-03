@@ -52,7 +52,7 @@ if __name__ == "__main__":
 - añadimos un condicional que lo unico que haga sea cambiar si se suma o resta, sin realizar un ningun otro cambio en el codigo
 - usamos 2 ciclos for para recorrer tanto las filas como columnas
 - añadimos a la matriz de resultado la suma de los valores [i][j] de la matriz, de esta forma sabemso que estan en las mismas "coordenadas"
-- Imprimimos nuestro resultado de manera que sea comprensible
+- Imprimimos nuestro resultado
 -----------------------------------
 ### 2. Desarrollar un algoritmo que permita realizar el producto de matrices.
 
@@ -105,37 +105,35 @@ if __name__=="__main__":
 - dentro del segundo for realizamos un ciclo while que vaya a representar nuestra sumatoria
 - en este ciclo while o representara el valor de iteraicon con un caso base y un caso de iteracion, generando la sumatoria mostrada con anterioridad
 - el resultado de esta sumatoria sera el item que añadiremos a la fila, este proceso se repetira j veces y la lista resultante se añadira a la matriz
-- Se imrprime nuestro resultado de manera que sea compresible
+- Se imrprime nuestro resultado
 -----------------------------------
-### 3. Hacer un algoritmo que deje al final de un arreglo de números todos los ceros que aparezcan en dicho arreglo.
+### 3. Desarrollar un algoritmo que permita obtener una matriz transpuesta.
 ```python
-from Reto10_1 import adicionlista
-#Importamos la funcion de Reto10_1
-if __name__ == "__main__":
-    p:list=[]
-    #Declaramos la lista en la cual se realizara el ejercicio
-    adicionlista(p,False)
-    #Aplicamos la funcion para añadir elementos a la lista
-    for i in p:
-        #aplicamos un ciclo for para recorrer la lista
-        if i/10==i//10:
-            #si la division del valor es igual a su divisor exacta podermos decir que es multiplo entero de 10 y por tanto tiene un 0 al final
-            p.pop(p.index(i)) 
-            #En caso de entrar en la condicional se eliminara el valor de la lista
-            p.append(i)
-            #y se reañadira al final de la lista
-    print(p)
-    #se imprime la lista con los valores reorganizados
+from Reto11_1 import *
+if __name__=="__main__":
+    m1=generarmatriz(1) #generamos la matriz
+    mt:list=[] #declaramos la lista en donde pondremos el resultado
+    y=len(m1) #declaramos y como la cantidad de filas
+    x=len(m1[0]) #declaramos x como la cantidad de valores en la fila (columnas)
+    for i in range (x): #usamos el for que recorrera las filas, pero esta estara limitado a la cantidad de columnas
+        lt:list=[] #creamos la lista en donde añadiremos valores para la fila i
+        for j in range (y): #recorremos las columnas, esta vez limitado a la cantidad de filas de la matriz original
+            lt.append(m1[j][i]) #añadimos a la matriz resultante el valor, pero esta vez con los valores de indexacion invertidos
+        mt.append(lt) #añadimos la lista a la matriz
+    print(mt) #imprimimos nuestra matriz resultante
 ```
 #### explicacion:
-- Importamos la funcion del punto 1 del reto 10
-- Dentro del codigo declaramos una lista, esta sera en la cual realizaremos el ejercicio
-- Aplicamos la funcion en la lista para añadir valores
-- Aplicamos un ciclo for para recorrer los datos de la lista
-- Dentro del ciclo for aplicamos un condicional if el cual evaluara la igualdad de la division normal y exacta del valor entre 10, esto nos servira para comprobar que el numero tiene un 0 al final.
-- En caso de que no sea igual el valor pasara, en caso contrario se quitara el valor de la lista con un pop
-- Para despues reañadirlo con un .append, de esta forma aparecera al final de la lista
-- Finalizado el proceso se reimprimira la lista reorganizada
+- Importamos la funcion del punto 1
+- Dentro del codigo declaramos una lista, esta sera nuestra matriz resultante
+- La matriz transpuesta es el resultado de invertir los valores de indexacion de una lista
+- ![image](https://github.com/user-attachments/assets/492f5c9e-678b-42b0-a424-4d65f9fa19bd)
+- ![image](https://github.com/user-attachments/assets/53ef3faa-9dbe-43ca-a383-4b9b913a06c8)
+- Para generar una matriz asi es necesario que esten invertidos los valores de filas y columnas
+- declramos 2 variables (x e y) para identificar x (horizontal) como la cantidad de valores por filas (columnas) e y (vertical) como la cantidad de filas
+- Realizamos el usual recorrido por 2 ciclos for, pero esta vez el rango estara invertido entre columnas y filas para que la matriz se genere con los valores inversos de x e y en realcion con la original
+- dentro del segundo for añadimos a la lista el valor [j][i] de la matriz original, asi tendremos en el lugar original el valor de index invertido
+- añadidos todos los valores a la lista i se añade a la matriz
+- Finalizado el proceso se imrprime la matriz
 -----------------------------------
 
 ### 4. Revisar que son los algoritmos de sorting, entender bubble-sort (enlace a implementación).
